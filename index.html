@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Campeones</title>
+
+</head>
+<body>
+    <header class="h-100 p-5 text-bg-secondary text-center">
+        <h1>Campeones</h1>
+    </header>
+    <main class="container-fluid row mt-3">
+        <div class="row">
+            <div class="col-6">
+                <form class="card">
+                    <div class="card-header">
+                        <h5>Completa los Datos</h5>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <label>Nombre_Campeon</label>
+                            <input type="text" id="nom_camp" name="nombre_camp" class="form-control" onblur="verificar(this.id)">
+                            <div id="e-nombre"></div>
+                        </div>
+                        <div>
+                            <label for="roles">Selecciona el rol:</label>
+                            <select name="roles" id="rol" class="form-select">
+                                <option value="top">Top</option>
+                                <option value="jungla">Jungla</option>
+                                <option value="mid">Mid</option>
+                                <option value="adc">Adc</option>
+                                <option value="soporte">Soporte</option>
+                            </select>
+                        </div>
+                        <label>Genero</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gene" id="gene1" value="Femenino" onclick="validaRadio(this.name)">
+                            <label class="form-check-label" for="gene1">
+                              Femenino
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gene" id="gene2" value="Masculino" onclick="validaRadio(this.name)"> 
+                            <label class="form-check-label" for="gene2">
+                              Masculino
+                            </label>
+                          </div>
+                        <div>
+                            <label for="region">Seleccione la Region:</label>
+                            <select name="region" id="region" class="form-select">
+                                <option value="piltover">Piltover</option>
+                                <option value="zaun">Zaun</option>
+                                <option value="aguas-turbias">Aguas Turbias</option>
+                                <option value="ixtal">Ixtal</option>
+                                <option value="el-vacio">El Vacío</option>
+                                <option value="jonia">Jonia</option>
+                                <option value="demacia">Demacia</option>
+                                <option value="shurima">Shurima</option>
+                                <option value="targon">Targon</option>
+                                <option value="islas-de-las-sombras">Islas de las Sombras</option>
+                                <option value="noxus">Noxus</option>
+                                <option value="ciudad-de-bandle">Ciudad de Bandle</option>
+                                <option value="freljord">Freljord</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Año de lanzamiento</label>
+                            <input type="date" id="año" name="fecha" class="form-control" onblur="verificar(this.id)">
+                            <div id="e-fecha"></div>
+                        </div>
+                        <div> 
+                            <label for="raza">Selecciona una raza:</label>
+                            <select name="razas" id="raza" class="form-select">
+                                <option value="vastaya">Vastaya</option>
+                                <option value="yordle">Yordle</option>
+                                <option value="targoniano">Targoniano</option>
+                                <option value="humano">Humano</option>
+                                <option value="dragon">Dragones</option>
+                                <option value="darkin">Darkin</option>
+                                <option value="nacido-del-vacio">nacido del vacío</option>
+                                <option value="ascendido">Ascendidos</option>
+                                <option value="no-muerto">No-muertos</option>
+                                <option value="cyborg">Coyborg</option>
+                                <option value="espiritus">Espíritus</option>
+                                <option value="desconocido">Desconocido</option>
+                            </select>
+                        </div>
+                        <label>Tipo gama</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="tipo_gama" id="Cuerpo_a_Cuerpo" value="Cuerpo a Cuerpo" onclick="validaRadio(this.name)">
+                            <label class="form-check-label" for="Cuerpo_a_Cuerpo">
+                              Cuerpo a Cuerpo
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="tipo_gama" id="A_distancia" value="A distancia" onclick="validaRadio(this.name)"> 
+                            <label class="form-check-label" for="A_distancia">
+                              A distancia
+                            </label>
+                          </div>
+                    </div>
+                </form>
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-success m-2" id="btn-guardar" value="guardar">Guardar</button>
+                    <button class="btn btn-primary m-2" id="btn-limpiar" onclick="limpiar()">Limpiar</button>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Nombre Campeon</th>
+                                <th>Rol</th>
+                                <th>Genero</th>
+                                <th>Region</th>
+                                <th>Año lanzamiento</th>
+                                <th>Raza</th>
+                                <th>Tipo de gama</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="contenido"></tbody>
+                    </table>
+                </div> 
+            </div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="funciones.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="helper.js"></script>
+</body>
+</html>
+
